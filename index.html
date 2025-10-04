@@ -90,14 +90,19 @@
     <script type="text/javascript" src="//www.highperformanceformat.com/507e31164c2ef7f5f3e69ac9712f8a94/invoke.js"></script>
   </div>
 
+  <!-- New Adsterra Smartlink -->
+  <div class="smartlink" id="adsterra-smartlink-2">
+    <a href="https://www.revenuecpmgate.com/nwa9cnsq24?key=364931acc7bbd6ea8b6307c7fffb941f" target="_blank">Explore Our Sponsor</a>
+  </div>
+
   <div class="container">
     <h2>Auto Ad System</h2>
     <button id="autoBtn" onclick="startAutoRefresh()">Auto Ads</button>
     <button id="stopBtn" onclick="stopAutoRefresh()">Stop Auto Ads</button>
     <div id="timer">Next refresh in <span id="count">30</span>s</div>
 
-    <!-- Smartlink for x2874979434.github.io -->
-    <div class="smartlink">
+    <!-- Existing Adsterra Smartlink -->
+    <div class="smartlink" id="adsterra-smartlink-1">
       <a href="https://www.revenuecpmgate.com/nwa9cnsq24?key=364931acc7bbd6ea8b6307c7fffb941f" target="_blank">Visit Our Sponsor</a>
     </div>
 
@@ -149,13 +154,28 @@
       countdown = 30;
       document.getElementById("count").textContent = countdown;
 
+      // 延迟1秒后自动点击两个Adsterra智能链接
+      setTimeout(() => {
+        const smartlink1 = document.querySelector('#adsterra-smartlink-1 a');
+        const smartlink2 = document.querySelector('#adsterra-smartlink-2 a');
+        if (smartlink1) {
+          smartlink1.click(); // 点击第一个智能链接
+        }
+        if (smartlink2) {
+          smartlink2.click(); // 点击第二个智能链接
+        }
+      }, 1000); // 1秒延迟减少浏览器阻止
+
+      // 模拟滚动到底部
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
       timerInterval = setInterval(() => {
         countdown--;
         document.getElementById("count").textContent = countdown;
 
         if (countdown <= 0) {
           clearInterval(timerInterval);
-          location.reload(); // Auto refresh
+          location.reload(); // 自动刷新
         }
       }, 1000);
     }
@@ -166,7 +186,7 @@
       document.getElementById("timer").style.display = "none";
     }
 
-    // Auto restart if coming from same site (after reload)
+    // 页面加载时检查是否从同一域名刷新
     window.onload = function () {
       if (document.referrer.includes(window.location.hostname)) {
         startAutoRefresh();
