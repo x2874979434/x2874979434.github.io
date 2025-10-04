@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto Ad Page</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f3f4f6;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      max-width: 420px;
+      margin: 20px auto;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+
+    #autoBtn {
+      background: #2563eb;
+    }
+
+    #stopBtn {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+    }
+
+    #timer {
+      font-size: 18px;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .ad-block {
+      margin: 20px auto;
+    }
+  </style>
+
+  <!-- Social Bar -->
+  <script type='text/javascript' src='//pl26946769.profitableratecpm.com/38/ea/51/38ea51398fa02dfda59639b4f6fa109b.js'></script>
+</head>
+<body>
+
+  <!-- 728x90 Banner -->
+  <div class="ad-block">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '507e31164c2ef7f5f3e69ac9712f8a94',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/507e31164c2ef7f5f3e69ac9712f8a94/invoke.js"></script>
+  </div>
+
+  <div class="container">
+    <h2>Auto Ad System</h2>
+    <button id="autoBtn" onclick="startAutoRefresh()">Auto Ads</button>
+    <button id="stopBtn" onclick="stopAutoRefresh()">Stop Auto Ads</button>
+    <div id="timer">Next refresh in <span id="count">30</span>s</div>
+
+    <!-- Native Banner (Original) -->
+    <div class="ad-block">
+      <script async="async" data-cfasync="false" src="//pl26910486.profitableratecpm.com/9095f38af9c76eecc4eea926d9942cbf/invoke.js"></script>
+      <div id="container-9095f38af9c76eecc4eea926d9942cbf"></div>
+    </div>
+
+    <!-- New Native Banner -->
+    <div class="ad-block">
+      <script async="async" data-cfasync="false" src="//pl27778300.revenuecpmgate.com/9685d68343e3be0986208dfba92bca80/invoke.js"></script>
+      <div id="container-9685d68343e3be0986208dfba92bca80"></div>
+    </div>
+  </div>
+
+  <!-- New 468x60 Banner -->
+  <div class="ad-block">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'e644fc7b5711cb1fb2881e6fd4971b67',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/e644fc7b5711cb1fb2881e6fd4971b67/invoke.js"></script>
+  </div>
+
+  <!-- New Popunder -->
+  <script type='text/javascript' src='//pl27778289.revenuecpmgate.com/f7/50/a5/f750a57218858c73d8b32fa000ec6e1c.js'></script>
+
+  <script>
+    let refreshActive = false;
+    let countdown = 30;
+    let timerInterval;
+
+    function startAutoRefresh() {
+      if (refreshActive) return;
+      refreshActive = true;
+      document.getElementById("timer").style.display = "block";
+      countdown = 30;
+      document.getElementById("count").textContent = countdown;
+
+      timerInterval = setInterval(() => {
+        countdown--;
+        document.getElementById("count").textContent = countdown;
+
+        if (countdown <= 0) {
+          clearInterval(timerInterval);
+          location.reload(); // Auto refresh
+        }
+      }, 1000);
+    }
+
+    function stopAutoRefresh() {
+      refreshActive = false;
+      clearInterval(timerInterval);
+      document.getElementById("timer").style.display = "none";
+    }
+
+    // Auto restart if coming from same site (after reload)
+    window.onload = function () {
+      if (document.referrer.includes(window.location.hostname)) {
+        startAutoRefresh();
+      }
+    }
+  </script>
+</body>
+</html>
